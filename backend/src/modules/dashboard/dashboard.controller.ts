@@ -3,16 +3,16 @@ import { DashboardService } from './dashboard.service';
 import { JwtAuthGuard } from '../../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../../auth/guards/roles.guard';
 import { Roles } from '../../auth/decorators/roles.decorator';
-import { UserRole } from '../../modules/users/schemas/user.schema';
+import { UserRole } from '../users/schemas/user.schema';
 
 @Controller('dashboard')
 @UseGuards(JwtAuthGuard, RolesGuard)
 export class DashboardController {
     constructor(private readonly dashboardService: DashboardService) { }
 
-    @Get('stats')
+    @Get('overview')
     @Roles(UserRole.ADMIN)
-    async getStats() {
-        return this.dashboardService.getStats();
+    async getOverview() {
+        return this.dashboardService.getOverview();
     }
 }
