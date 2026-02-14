@@ -3,10 +3,15 @@ import Hero from "@/components/home/Hero";
 import Stats from "@/components/home/Stats";
 import Programs from "@/components/home/Programs";
 import Footer from "@/components/home/Footer";
+import { Meta } from "@/components/global/Meta";
 
 const Home = () => {
   return (
     <div>
+      <Meta
+        title="Home"
+        description="Edunexus is a premier school management system designed to streamline administrative tasks and enhance the learning experience."
+      />
       <Navbar />
       <main className="">
         <Hero />

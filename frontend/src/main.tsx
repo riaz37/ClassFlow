@@ -7,13 +7,17 @@ import { router } from "@/pages/routes/router.tsx";
 import { AuthProvider } from "@/hooks/AuthProvider";
 import { ThemeProvider } from "@/components/provider/theme";
 
+import { HelmetProvider } from "react-helmet-async";
+
 createRoot(document.getElementById("root")!).render(
   <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
     <StrictMode>
-      <AuthProvider>
-        <RouterProvider router={router} />
-        <Toaster />
-      </AuthProvider>
+      <HelmetProvider>
+        <AuthProvider>
+          <RouterProvider router={router} />
+          <Toaster />
+        </AuthProvider>
+      </HelmetProvider>
     </StrictMode>
   </ThemeProvider>,
 );

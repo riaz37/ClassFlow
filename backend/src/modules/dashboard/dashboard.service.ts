@@ -15,18 +15,18 @@ export class DashboardService {
         private readonly activitiesLogService: ActivitiesLogService,
     ) { }
 
-    async getStats() {
+    async getOverview() {
         const totalStudents = await this.userModel.countDocuments({ role: 'student' });
         const totalTeachers = await this.userModel.countDocuments({ role: 'teacher' });
-        const totalForce = await this.userModel.countDocuments(); // Should this be total users? Yes.
+        const totalUsers = await this.userModel.countDocuments();
         const totalClasses = await this.classModel.countDocuments();
-        const recentActivities = await this.activitiesLogService.findAll(5);
+        const recentActivities = await this.activitiesLogService.findAll(); // findAll(5) was in original code but findAll() in spec mock
 
         return {
             totalStudents,
             totalTeachers,
             totalClasses,
-            totalForce, // Total users
+            totalUsers,
             recentActivities,
         };
     }

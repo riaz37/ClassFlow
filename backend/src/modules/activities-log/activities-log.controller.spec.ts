@@ -30,7 +30,7 @@ describe('ActivitiesLogController', () => {
     it('should return all activities', async () => {
       const result = [{ action: 'LOGIN' }];
       mockService.findAll.mockResolvedValue(result);
-      expect(await controller.findAll()).toEqual(result);
+      expect(await controller.findAll('5')).toEqual(result);
       expect(service.findAll).toHaveBeenCalled();
     });
   });
